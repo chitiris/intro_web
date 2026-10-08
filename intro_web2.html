@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <title>Θέλω να περάσω το μάθημα</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: white;
+            transition: background-color 0.3s;
+            font-family: Arial, sans-serif;
+        }
+
+        #koumpi {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            transition: top 0.2s, left 0.2s;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="koumpi">Θέλω να περάσω το μάθημα</button>
+
+    <script>
+        const koumpi = document.getElementById("koumpi");
+
+        // Επιστρέφει ένα τυχαίο χρώμα σε μορφή rgb
+        function tyxaioXroma() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return "rgb(" + r + ", " + g + ", " + b + ")";
+        }
+
+        // Όταν το ποντίκι πλησιάζει το κουμπί
+        koumpi.addEventListener("mouseover", function () {
+            // Μέγιστες θέσεις ώστε το κουμπί να μη βγαίνει έξω από την οθόνη
+            const maxX = window.innerWidth - koumpi.offsetWidth;
+            const maxY = window.innerHeight - koumpi.offsetHeight;
+
+            const x = Math.floor(Math.random() * maxX);
+            const y = Math.floor(Math.random() * maxY);
+
+            koumpi.style.left = x + "px";
+            koumpi.style.top = y + "px";
+
+            document.body.style.backgroundColor = tyxaioXroma();
+        });
+
+        // Αν κάποιος καταφέρει να το πατήσει (π.χ. με Tab + Enter)
+        koumpi.addEventListener("click", function () {
+            alert("Μπράβο! Καλή Ακαδημαϊκή Χρονιά! 🎉");
+        });
+    </script>
+
+</body>
+</html>
